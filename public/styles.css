@@ -5,6 +5,14 @@ html * {
     font-size: 1rem;
 }
 
+::-webkit-scrollbar {
+    background: #41AEA9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #25625f;
+}
+
 header {
     background: #A6F6F1;
     display: flex;
@@ -64,28 +72,80 @@ footer .navMenu a {
     color: #E8FFFF;
 }
 
-/* footer .footerLogo {
+footer .navMenu a {
+    padding-left: 0.5rem;
+}
+
+footer .divLogoContainer {
     display: none;
-} */
+}
 
+footer .socialMediaFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vh;
+    flex-wrap: wrap;
+}
 
+footer .socialMediaFooter a {
+    width: 7vh;
+    height: 7vh;
+    margin: 1vh;
+}
+
+footer .socialMediaFooter a svg{
+    width: 100%;
+    height: 100%;
+}
+
+footer .socialMediaFooter .facebookFooter {
+    color: #3b5998;
+}
+
+footer .socialMediaFooter .twitterFooter {
+    color: #00acee;
+}
+
+footer .socialMediaFooter .instagramFooter {
+    color: #833AB4;
+}
+
+footer .socialMediaFooter .youtubeFooter {
+    color: #c4302b;
+}
 
 
 .mainHome {
     min-height: 60.1vh;
+    background: #E8FFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 @media only screen and (min-width: 300px) {
 }
 
-@media only screen and (min-width: 350px) {
+@media only screen and (min-width: 350px) {    
+    footer .divLogoContainer {
+        display: flex;
+    }    
 }
 
 @media only screen and (min-width: 400px) {
+    header .navMenu {
+        flex-direction: row;
+        flex: 1;
+    }
 }
 
 @media only screen and (min-width: 500px) {
+    footer .navMenu {
+        flex-direction: row;
+        flex: 1;
+    }
 }
 
 @media only screen and (min-width: 600px) {
