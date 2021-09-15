@@ -2,8 +2,123 @@ html * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-size: 1rem;
 }
 
-body {
-    background: red;
+header {
+    background: #A6F6F1;
+    display: flex;
+    justify-content: space-between;
+    height: 20vh;
 }
+
+header .divLogoContainer,
+footer .divLogoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+}
+
+header .divLogoContainer .logo,
+footer .divLogoContainer .logo {
+    width: 5rem;
+    height: 3rem;
+    background-position: center;
+    background-size: cover;
+}
+
+header .divLogoContainer p,
+footer .divLogoContainer p {
+    color: #213E3B;
+    font-weight: bold;
+}
+
+header .navMenu,
+footer .navMenu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header .navMenu a,
+footer .navMenu a {
+    text-decoration: none;
+    padding-right: 0.5rem;
+    color: #213E3B;
+    font-weight: bold;
+}
+
+footer {
+    background: #213E3B;
+    display: flex;
+    justify-content: space-between;
+    height: 20vh;
+}
+
+footer .divLogoContainer p,
+footer .navMenu a {
+    color: #E8FFFF;
+}
+
+/* footer .footerLogo {
+    display: none;
+} */
+
+
+
+
+.mainHome {
+    min-height: 60.1vh;
+}
+
+
+@media only screen and (min-width: 300px) {
+}
+
+@media only screen and (min-width: 350px) {
+}
+
+@media only screen and (min-width: 400px) {
+}
+
+@media only screen and (min-width: 500px) {
+}
+
+@media only screen and (min-width: 600px) {
+}
+
+@media only screen and (min-width: 700px) {
+}
+
+@media only screen and (min-width: 800px) {
+}
+
+@media only screen and (min-width: 900px) {
+}
+
+@media only screen and (min-width: 1000px) {
+}
+
+@media only screen and (min-width: 1080px) {
+}
+
+@media only screen and (min-width: 1440px) {
+}
+
+@media only screen and (min-width: 1920px) {
+}
+
+@media only screen and (min-width: 2560px) {
+}
+
+
+/*
+#E8FFFF
+#A6F6F1
+#41AEA9
+#213E3B
+*/
