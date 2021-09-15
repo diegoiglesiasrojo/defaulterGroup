@@ -2,19 +2,27 @@ const path = require("path")
 
 const viewsControllers = {
     home: (req, res) => {
-        res.sendFile(path.join(__dirname, "..", "views/index.html"))
+        res.render("index", {
+            title: "Home"
+        })
     },
 
     signUp: (req, res) => {
-        res.sendFile(path.join(__dirname, "..", "views/signUp.html"))
+        res.render("signUp", {
+            title: "sign Up"
+        })
     },
 
     signIn: (req, res) => {
-        res.sendFile(path.join(__dirname, "..", "views/signIn.html"))
+        res.render("signIn", {
+            title: "sign In"
+        })
     },
 
     debtsList: (req, res) => {
-        res.sendFile(path.join(__dirname, "..", "views/debtsList.html"))
+        res.render("debtsList", {
+            title: "debts List"
+        })
     }
 }
 module.exports = viewsControllers
