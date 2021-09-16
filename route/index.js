@@ -13,9 +13,6 @@ router.route("/signUp")
 router.route("/signIn")
 .get(viewsControllers.signIn)
 
-router.route("/debtsList")
-.get(viewsControllers.debtsList)
-
 router.route("/users")
 .post(userControllers.createUser)
 .get(userControllers.readAllUsers)
@@ -25,9 +22,9 @@ router.route("/users/:id")
 .put(userControllers.updateUserById)
 .delete(userControllers.deleteUserById)
 
-router.route("/debts")
+router.route("/debtsList")
 .post(debtControllers.createDebt)
-.get(debtControllers.readAllDebts)
+.get(debtControllers.debtsList)
 
 router.route("/debts/:id")
 .get(debtControllers.readDebtById)

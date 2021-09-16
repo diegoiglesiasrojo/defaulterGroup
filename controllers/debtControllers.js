@@ -1,12 +1,32 @@
 const Debt = require("../models/Debt")
 
 const debtControllers = {
-    readAllDebts: (req, res) => {
-        res.json("todas las deudas")
+    debtsList: async (req, res) => {
+        const debtList = await Debt.find()
+        res.render("debtsList", {
+            title: "debts List",
+            debtList,
+            error: null
+        })
     },
 
-    createDebt: (req, res) => {
-        res.json("crear una deuda")
+    createDebt: async (req, res) => {
+        const {userId, debtor, debt, isUSD} = req.body
+        const DebtToCreate = await new Debt({
+            userId, debtor, debt, isUSD
+        })
+        DebtToCreate.save()
+        .then(() => {
+            res.redirect("/debtsList")
+        })
+        .catch( async e => {
+            const debtList = await Debt.find()
+            res.render("debtsList", {
+                title: "debts List",
+                debtList,
+                error: e
+            })    
+        })
     },
 
     readDebtById: (req, res) => {

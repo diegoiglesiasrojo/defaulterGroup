@@ -1,5 +1,3 @@
-const path = require("path")
-
 const viewsControllers = {
     home: (req, res) => {
         res.render("index", {
@@ -18,11 +16,5 @@ const viewsControllers = {
             title: "sign In"
         })
     },
-
-    debtsList: (req, res) => {
-        res.render("debtsList", {
-            title: "debts List"
-        })
-    }
 }
 module.exports = viewsControllers
