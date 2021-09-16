@@ -6,16 +6,17 @@ const debtControllers = {
         res.render("debtsList", {
             title: "debts List",
             debtList,
-            error: null
+            error: null,
+            userLogIn: req.session.userLogIn
         })
     },
 
     createDebt: async (req, res) => {
         const {userId, debtor, debt, isUSD} = req.body
-        const DebtToCreate = await new Debt({
+        const debtToCreate = await new Debt({
             userId, debtor, debt, isUSD
         })
-        DebtToCreate.save()
+        debtToCreate.save()
         .then(() => {
             res.redirect("/debtsList")
         })
@@ -24,7 +25,8 @@ const debtControllers = {
             res.render("debtsList", {
                 title: "debts List",
                 debtList,
-                error: e
+                error: e,
+                userLogIn: req.session.userLogIn
             })    
         })
     },
@@ -43,7 +45,8 @@ const debtControllers = {
             res.render("debtsList", {
                 title: "debts List",
                 debtList,
-                error: e
+                error: e,
+                userLogIn: req.session.userLogIn
             })
         })
     },
@@ -62,7 +65,8 @@ const debtControllers = {
             res.render("debtsList", {
                 title: "debts List",
                 debtList,
-                error: e
+                error: e,
+                userLogIn: req.session.userLogIn
             })
         })
     }

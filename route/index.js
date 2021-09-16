@@ -7,20 +7,20 @@ const viewsControllers = require("../controllers/viewsControllers")
 router.route("/")
 .get(viewsControllers.home)
 
-router.route("/signUp")
-.get(viewsControllers.signUp)
-
-router.route("/signIn")
-.get(viewsControllers.signIn)
-
-router.route("/users")
+router.route("/users/signUp")
+.get(userControllers.signUpView)
 .post(userControllers.createUser)
-.get(userControllers.readAllUsers)
+
+router.route("/users/signIn")
+.get(userControllers.signInView)
+.post(userControllers.signIn)
+
+router.route("/users/logOut")
+.get(userControllers.logOut)
 
 router.route("/users/:id")
-.get(userControllers.readUserById)
-.put(userControllers.updateUserById)
-.delete(userControllers.deleteUserById)
+.post(userControllers.updateUserById)
+.get(userControllers.deleteUserById)
 
 router.route("/debtsList")
 .post(debtControllers.createDebt)

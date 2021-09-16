@@ -4,10 +4,14 @@
         <p>Defaulter Group</p>
     </div>
     <nav class="navMenu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/debtsList">Debts List</a></li>
-        <li><a href="/signIn">Sign In</a></li>
-        <li><a href="/signUp">Sign Up</a></li>
+        <% if(userLogIn) { %>
+            <li><a href="/debtsList">Debts List</a></li>
+            <li><a href="/users/logOut">Log Out</a></li>
+        <% } else { %>
+            <li><a href="/">Home</a></li>
+            <li><a href="/users/signIn">Sign In</a></li>
+            <li><a href="/users/signUp">Sign Up</a></li>
+        <% } %>
     </nav>
     <div class="socialMediaFooter">
         <a href="https://www.facebook.com/" target="_blank" class="facebookFooter" rel="noreferrer">
