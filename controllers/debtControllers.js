@@ -29,16 +29,43 @@ const debtControllers = {
         })
     },
 
-    readDebtById: (req, res) => {
-        res.json("obtener una deuda de " + req.params.id)
-    },
-
     updateDebtById: (req, res) => {
-        res.json("modificar una deuda de " + req.params.id)
+        Debt.findOneAndUpdate({_id: req.params.id}, {...req.body})
+        .then(debt => {
+            if(debt) {
+                res.redirect("/debtsList")
+            } else {
+                throw new Error
+            }
+        })
+        .catch(async e => {
+            const debtList = await Debt.find()
+            res.render("debtsList", {
+                title: "debts List",
+                debtList,
+                error: e
+            })
+        })
     },
 
     deleteDebtById: (req, res) => {
-        res.json("borrar una deuda de " + req.params.id)
+        Debt.findOneAndDelete({_id: req.params.id})
+        .then(debt => {
+            if(debt) {
+                res.redirect("/debtsList")
+            } else {
+                throw new Error
+            }
+        })
+        .catch(async e => {
+            const debtList = await Debt.find()
+            res.render("debtsList", {
+                title: "debts List",
+                debtList,
+                error: e
+            })
+        })
     }
 }
+
 module.exports = debtControllers

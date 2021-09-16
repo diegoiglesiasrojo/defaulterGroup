@@ -26,9 +26,8 @@ router.route("/debtsList")
 .post(debtControllers.createDebt)
 .get(debtControllers.debtsList)
 
-router.route("/debts/:id")
-.get(debtControllers.readDebtById)
-.put(debtControllers.updateDebtById)
-.delete(debtControllers.deleteDebtById)
+router.route("/debtsList/:id")
+.post(debtControllers.updateDebtById)
+.get(debtControllers.deleteDebtById)
 
 module.exports = router
