@@ -3,13 +3,14 @@ const router = express.Router()
 const userControllers = require("../controllers/userControllers")
 const debtControllers = require("../controllers/debtControllers")
 const viewsControllers = require("../controllers/viewsControllers")
+const validator = require("../controllers/validator")
 
 router.route("/")
 .get(viewsControllers.home)
 
 router.route("/users/signUp")
 .get(userControllers.signUpView)
-.post(userControllers.createUser)
+.post(validator, userControllers.createUser)
 
 router.route("/users/signIn")
 .get(userControllers.signInView)

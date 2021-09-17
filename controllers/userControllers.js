@@ -14,21 +14,25 @@ const userControllers = {
     createUser: async (req, res) => {
         const {firstName, lastName, password, eMail, photoURL} = req.body
         let encryptedPassword = bcryptjs.hashSync(password)
-        const userToCreate = await new User({
-            firstName, lastName, password: encryptedPassword, eMail, photoURL
-        })
-        userToCreate.save()
-        .then(() => {
-            res.redirect("/users/signIn")
-        })
-        .catch(e => {
+        try {
+            const userToCreate = await new User({
+                firstName, lastName, password: encryptedPassword, eMail, photoURL
+            })
+            const userExist = await User.findOne({eMail})
+            if (userExist) {
+                throw new Error("Mail already exist")
+            } else {
+                await userToCreate.save()
+                res.redirect("/users/signIn")
+            }
+        } catch (e){
             res.render("signUp", {
                 title: "sign Up",
                 error: e,
-                userData: {firstName, lastName, password, eMail, photoURL},
+                userData: {firstName, lastName, eMail, photoURL},
                 userLogIn: req.session.userLogIn
             })
-        })
+        }
     },
 
     signInView: (req, res) => {
@@ -45,13 +49,13 @@ const userControllers = {
         User.findOne({eMail: eMail})
         .then(account => {
             if(!account) {
-                throw new Error("Username or password incorrect")
+                throw new Error("Mail or password incorrect")
             } else {
                 if(bcryptjs.compareSync(password, account.password)) {
                     req.session.userLogIn = true
                     res.redirect("/debtsList")
                 } else {
-                    throw new Error("Username or password incorrect")
+                    throw new Error("Mail or password incorrect")
                 }
             }
         })

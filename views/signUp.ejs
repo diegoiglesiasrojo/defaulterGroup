@@ -3,13 +3,12 @@
 
 <main class="mainSignUp">
     <form action="/users/signUp" method="POST">
-        <input type="text" name="firstName" id="firstName" value="<%= !userData ? '' : userData.firstName %>">
-        <input type="text" name="lastName" id="lastName" value="<%= !userData ? '' : userData.lastName %>">
-        <input type="email" name="eMail" id="eMail" value="<%= !userData ? '' : userData.eMail %>">
-        <input type="password" name="password" id="password" value="<%= !userData ? '' : userData.password %>">
-        <input type="text" name="photoURL" id="photoURL" value="<%= !userData ? '' : userData.photoURL %>">
+        <input type="text" name="firstName" id="firstName" required value="<%= !userData ? '' : userData.firstName %>">
+        <input type="text" name="lastName" id="lastName" required value="<%= !userData ? '' : userData.lastName %>">
+        <input type="email" name="eMail" id="eMail" required value="<%= !userData ? '' : userData.eMail %>">
+        <input type="password" name="password" id="password" required>
+        <input type="text" name="photoURL" id="photoURL" required value="<%= !userData ? '' : userData.photoURL %>">
         <input type="submit" value="Register">
-        <input type="reset" value="Reset">
     </form>
     <% console.log(error, userData) %>
 </main>
