@@ -24,12 +24,14 @@ const userControllers = {
                 throw new Error("Mail already exist")
             } else {
                 await userToCreate.save()
+                req.session.userLogIn = true
+                req.session.userId = userToCreate._id
                 res.redirect("/users/signIn")
             }
         } catch (e){
             res.render("signUp", {
                 title: "sign Up",
-                error: e,
+                error: e.message,
                 userData: {firstName, lastName, eMail, photoURL},
                 userLogIn: req.session.userLogIn,
                 validationError: null
@@ -51,20 +53,21 @@ const userControllers = {
         User.findOne({eMail: eMail})
         .then(account => {
             if(!account) {
-                throw new Error()
+                throw new Error("Mail or password incorrect")
             } else {
                 if(bcryptjs.compareSync(password, account.password)) {
                     req.session.userLogIn = true
+                    req.session.userId = account._id
                     res.redirect("/debtsList")
                 } else {
-                    throw new Error()
+                    throw new Error("Mail or password incorrect")
                 }
             }
         })
-        .catch(() => {
+        .catch(e => {
             res.render("signIn", {
                 title: "sign In",
-                error: "Mail or password incorrect",
+                error: e.message,
                 userData: {eMail, password},
                 userLogIn: req.session.userLogIn
             })

@@ -2,31 +2,33 @@ const Debt = require("../models/Debt")
 
 const debtControllers = {
     debtsList: async (req, res) => {
-        const debtList = await Debt.find()
+        const debtList = await Debt.find({userId: req.session.userId})
         res.render("debtsList", {
             title: "debts List",
             debtList,
             error: null,
-            userLogIn: req.session.userLogIn
+            userLogIn: req.session.userLogIn,
+            userId: req.session.userId
         })
     },
 
     createDebt: async (req, res) => {
-        const {userId, debtor, debt, isUSD} = req.body
+        const {debtor, debt, isUSD} = req.body
         const debtToCreate = await new Debt({
-            userId, debtor, debt, isUSD
+            userId: req.session.userId, debtor, debt, isUSD
         })
         debtToCreate.save()
         .then(() => {
             res.redirect("/debtsList")
         })
         .catch( async e => {
-            const debtList = await Debt.find()
+            const debtList = await Debt.find({_id: req.session.userId})
             res.render("debtsList", {
                 title: "debts List",
                 debtList,
                 error: e,
-                userLogIn: req.session.userLogIn
+                userLogIn: req.session.userLogIn,
+                userId: req.session.userId
             })    
         })
     },
@@ -46,7 +48,8 @@ const debtControllers = {
                 title: "debts List",
                 debtList,
                 error: e,
-                userLogIn: req.session.userLogIn
+                userLogIn: req.session.userLogIn,
+                userId: req.session.userId
             })
         })
     },
@@ -66,7 +69,8 @@ const debtControllers = {
                 title: "debts List",
                 debtList,
                 error: e,
-                userLogIn: req.session.userLogIn
+                userLogIn: req.session.userLogIn,
+                userId: req.session.userId
             })
         })
     }

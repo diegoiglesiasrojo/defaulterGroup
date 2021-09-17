@@ -2,7 +2,19 @@
 <%- include("partials/header") %>
 
 <main class="mainDebtsList">
-    <% console.log(debtList) %>
+    <section>
+        
+    </section>
+    <form action="/debtsList" method="POST">
+        <input type="text" name="debtor" placeholder="Debtor" required>
+        <input type="number" name="debt" placeholder="Debt" required>
+        <label for="USD">USD</label>
+        <input type="radio" name="isUSD" value="true" id="USD">
+        <label for="ARG">ARG</label>
+        <input type="radio" name="isUSD" value="false" id="ARG" checked>
+        <input type="submit" value="Create debt">
+    </form>
 </main>
 
+<% console.log(userId, error, debtList) %>
 <%- include("partials/footer") %>

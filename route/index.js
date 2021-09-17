@@ -3,32 +3,33 @@ const router = express.Router()
 const userControllers = require("../controllers/userControllers")
 const debtControllers = require("../controllers/debtControllers")
 const viewsControllers = require("../controllers/viewsControllers")
+const verifyRoutes = require("../controllers/verifyRoutes")
 const validator = require("../controllers/validator")
 
 router.route("/")
-.get(viewsControllers.home)
+.get(verifyRoutes.isLogOut, viewsControllers.home)
 
 router.route("/users/signUp")
-.get(userControllers.signUpView)
-.post(validator, userControllers.createUser)
+.get(verifyRoutes.isLogOut, userControllers.signUpView)
+.post(verifyRoutes.isLogOut, validator, userControllers.createUser)
 
 router.route("/users/signIn")
-.get(userControllers.signInView)
-.post(userControllers.signIn)
+.get(verifyRoutes.isLogOut, userControllers.signInView)
+.post(verifyRoutes.isLogOut, userControllers.signIn)
 
 router.route("/users/logOut")
-.get(userControllers.logOut)
+.get(verifyRoutes.isLogIn, userControllers.logOut)
 
 router.route("/users/:id")
-.post(userControllers.updateUserById)
-.get(userControllers.deleteUserById)
+.post(verifyRoutes.isLogIn, userControllers.updateUserById)
+.get(verifyRoutes.isLogIn, userControllers.deleteUserById)
 
 router.route("/debtsList")
-.post(debtControllers.createDebt)
-.get(debtControllers.debtsList)
+.post(verifyRoutes.isLogIn, debtControllers.createDebt)
+.get(verifyRoutes.isLogIn, debtControllers.debtsList)
 
 router.route("/debtsList/:id")
-.post(debtControllers.updateDebtById)
-.get(debtControllers.deleteDebtById)
+.post(verifyRoutes.isLogIn, debtControllers.updateDebtById)
+.get(verifyRoutes.isLogIn, debtControllers.deleteDebtById)
 
 module.exports = router
