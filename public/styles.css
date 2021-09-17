@@ -3,6 +3,7 @@ html * {
     padding: 0px;
     box-sizing: border-box;
     font-size: 1rem;
+    font-family: sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -233,6 +234,52 @@ main {
     text-align: center;
     margin: 0px 10px;
 }
+
+.mainDebtsList {
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainDebtsList .debtsListSection {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.mainDebtsList .debtsListSection article {
+    width: 45%;
+    text-align: center;
+    background: #213E3B;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 15px 0px;
+}
+
+.mainDebtsList .debtsListSection article h3,
+.mainDebtsList .debtsListSection article p {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #213E3B;
+    margin: 5px 0px;
+    color: #E8FFFF;
+}
+
+.mainDebtsList .debtsListSection article .priceP {
+    color: rgb(0, 184, 0);
+}
+
+.mainDebtsList .debtsListSection article .optionsDiv {
+    color: #E8FFFF;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+
+
+
+
 
 @media only screen and (min-width: 300px) {
     .mainHome .callToActionSection a {
