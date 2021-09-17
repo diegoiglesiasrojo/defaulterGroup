@@ -3,14 +3,19 @@
 
 <main class="mainSignUp">
     <form action="/users/signUp" method="POST">
-        <input type="text" name="firstName" id="firstName" required value="<%= !userData ? '' : userData.firstName %>">
-        <input type="text" name="lastName" id="lastName" required value="<%= !userData ? '' : userData.lastName %>">
-        <input type="email" name="eMail" id="eMail" required value="<%= !userData ? '' : userData.eMail %>">
-        <input type="password" name="password" id="password" required>
-        <input type="text" name="photoURL" id="photoURL" required value="<%= !userData ? '' : userData.photoURL %>">
+        <input type="text" name="firstName" placeholder="first name" required value="<%= !userData ? '' : userData.firstName %>">
+        <%- include("partials/textValidationError", {inputName: "firstName"}) %>
+        <input type="text" name="lastName" placeholder="last name" required value="<%= !userData ? '' : userData.lastName %>">
+        <%- include("partials/textValidationError", {inputName: "lastName"}) %>
+        <input type="email" name="eMail" placeholder="email" required value="<%= !userData ? '' : userData.eMail %>">
+        <%- include("partials/textValidationError", {inputName: "eMail"}) %>
+        <input type="password" name="password" placeholder="password" required>
+        <%- include("partials/textValidationError", {inputName: "password"}) %>
+        <input type="text" name="photoURL" placeholder="photo URL" required value="<%= !userData ? '' : userData.photoURL %>">
+        <%- include("partials/textValidationError", {inputName: "photoURL"}) %>
         <input type="submit" value="Register">
     </form>
-    <% console.log(error, userData) %>
 </main>
 
+<% console.log(error, userData) %>
 <%- include("partials/footer") %>

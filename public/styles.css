@@ -179,16 +179,76 @@ main {
     font-weight: bold;
 }
 
+.mainSignUp,
+.mainSignIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainSignUp form,
+.mainSignIn form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.mainSignUp form input,
+.mainSignIn form input {
+    border: none;
+    background: #213E3B;
+    color: #E8FFFF;
+    width: 70%;
+    padding: 5px 0px;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.mainSignUp form input:first-child {
+    margin-top: 20px;
+}
+
+.mainSignUp form input:last-child,
+.mainSignIn form input:last-child {
+    margin-bottom: 20px;
+    background: #A6F6F1;
+    color: #213E3B;
+    border-radius: 10px;
+    width: 6rem;
+}
+
+.mainSignUp form input::placeholder,
+.mainSignIn form input::placeholder {
+    color: #E8FFFF;
+    opacity: 0.6;
+}
+
+.mainSignUp form p,
+.mainSignIn form p {
+    font-weight: bold;
+    color: red;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0px 10px;
+}
+
 @media only screen and (min-width: 300px) {
     .mainHome .callToActionSection a {
         border-radius: 20px;
+    }
+
+    .mainSignUp form p,
+    .mainSignIn form p {
+        font-size: 1rem;
     }    
 }
 
 @media only screen and (min-width: 350px) {    
     footer .divLogoContainer {
         display: flex;
-    }    
+    }
 }
 
 @media only screen and (min-width: 400px) {
@@ -196,6 +256,17 @@ main {
         flex-direction: row;
         flex: 1;
     }
+    
+    .mainSignUp form input,
+    .mainSignIn form input {
+        width: 60%;
+    }
+
+    .mainSignUp form p,
+    .mainSignIn form p {
+        font-size: 1.2rem;
+        margin: 0px;
+    }    
 }
 
 @media only screen and (min-width: 500px) {
@@ -222,12 +293,26 @@ main {
 }
 
 @media only screen and (min-width: 600px) {
+    .mainSignUp form input,
+    .mainSignIn form input {
+        width: 50%;
+    }
 }
 
 @media only screen and (min-width: 700px) {
     header .navMenu a,
     footer .navMenu a {
         font-size: 1.5rem;
+    }
+
+    .mainSignUp form input,
+    .mainSignIn form input {
+        width: 40%;
+    }
+    
+    .mainSignUp form p,
+    .mainSignIn form p {
+        font-size: 1.3rem;
     }
 }
 
@@ -248,7 +333,12 @@ main {
 
     .mainHome .callToActionSection {
         width: 45%;
-    }    
+    }
+
+    .mainSignUp form input,
+    .mainSignIn form input {
+        width: 30%;
+    }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -297,6 +387,22 @@ main {
         width: 10rem;
         height: 5.38rem;
     }
+
+    .mainSignUp form input,
+    .mainSignIn form input {
+        width: 25%;
+        font-size: 1.6rem;
+    }
+    
+    .mainSignUp form p,
+    .mainSignIn form p {
+        font-size: 1.6rem;
+    }
+
+    .mainSignUp form input:last-child,
+    .mainSignIn form input:last-child {
+        width: 9rem;
+    }    
 }
 
 @media only screen and (min-width: 1920px) {
@@ -314,6 +420,22 @@ main {
     footer .divLogoContainer p {
         font-size: 2.5rem;
     }
+
+    .mainSignUp form input,
+    .mainSignIn form input {
+        width: 25%;
+        font-size: 1.9rem;
+    }
+    
+    .mainSignUp form p,
+    .mainSignIn form p {
+        font-size: 1.9rem;
+    }
+
+    .mainSignUp form input:last-child,
+    .mainSignIn form input:last-child {
+        width: 12rem;
+    }    
 }
 
 @media only screen and (min-width: 2560px) {
@@ -331,6 +453,21 @@ main {
     footer .divLogoContainer p {
         font-size: 3rem;
     }
+
+    .mainSignUp form input,
+    .mainSignIn form input {
+        font-size: 2.5rem;
+    }
+    
+    .mainSignUp form p,
+    .mainSignIn form p {
+        font-size: 2.5rem;
+    }
+
+    .mainSignUp form input:last-child,
+    .mainSignIn form input:last-child {
+        width: 15rem;
+    }    
 }
 
 

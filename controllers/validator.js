@@ -32,7 +32,8 @@ const validator = (req, res, next) => {
         const {firstName, lastName, eMail, photoURL} = req.body
         res.render("signUp", {
             title: "sign Up",
-            error: validation.error.details,
+            validationError: validation.error.details,
+            error: null,
             userData: {firstName, lastName, eMail, photoURL},
             userLogIn: req.session.userLogIn
         })

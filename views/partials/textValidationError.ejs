@@ -1,0 +1,2 @@
+<% let errorToRender = validationError ? validationError.find(error => error.path[0] === inputName) : null %>
+<p style="opacity: <%= errorToRender ? '1': '0' %>"><%= errorToRender ? errorToRender.message : "Error" %></p>

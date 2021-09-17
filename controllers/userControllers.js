@@ -7,7 +7,8 @@ const userControllers = {
             title: "sign Up",
             error: null,
             userData: undefined,
-            userLogIn: req.session.userLogIn
+            userLogIn: req.session.userLogIn,
+            validationError: null
         })
     },
 
@@ -30,7 +31,8 @@ const userControllers = {
                 title: "sign Up",
                 error: e,
                 userData: {firstName, lastName, eMail, photoURL},
-                userLogIn: req.session.userLogIn
+                userLogIn: req.session.userLogIn,
+                validationError: null
             })
         }
     },
@@ -49,20 +51,20 @@ const userControllers = {
         User.findOne({eMail: eMail})
         .then(account => {
             if(!account) {
-                throw new Error("Mail or password incorrect")
+                throw new Error()
             } else {
                 if(bcryptjs.compareSync(password, account.password)) {
                     req.session.userLogIn = true
                     res.redirect("/debtsList")
                 } else {
-                    throw new Error("Mail or password incorrect")
+                    throw new Error()
                 }
             }
         })
-        .catch(e => {
+        .catch(() => {
             res.render("signIn", {
                 title: "sign In",
-                error: e,
+                error: "Mail or password incorrect",
                 userData: {eMail, password},
                 userLogIn: req.session.userLogIn
             })
