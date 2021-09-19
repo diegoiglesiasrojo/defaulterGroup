@@ -188,7 +188,8 @@ main {
 }
 
 .mainSignUp form,
-.mainSignIn form {
+.mainSignIn form,
+.mainDebtsList form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -197,7 +198,8 @@ main {
 }
 
 .mainSignUp form input,
-.mainSignIn form input {
+.mainSignIn form input,
+.mainDebtsList form input {
     border: none;
     background: #213E3B;
     color: #E8FFFF;
@@ -212,7 +214,8 @@ main {
 }
 
 .mainSignUp form input:last-child,
-.mainSignIn form input:last-child {
+.mainSignIn form input:last-child,
+.mainDebtsList form input:last-child {
     margin-bottom: 20px;
     background: #A6F6F1;
     color: #213E3B;
@@ -221,7 +224,8 @@ main {
 }
 
 .mainSignUp form input::placeholder,
-.mainSignIn form input::placeholder {
+.mainSignIn form input::placeholder,
+.mainDebtsList form input::placeholder {
     color: #E8FFFF;
     opacity: 0.6;
 }
@@ -259,25 +263,43 @@ main {
 .mainDebtsList .debtsListSection article h3,
 .mainDebtsList .debtsListSection article p {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #213E3B;
     margin: 5px 0px;
     color: #E8FFFF;
 }
 
-.mainDebtsList .debtsListSection article .priceP {
+.mainDebtsList .debtsListSection article .priceGreen {
     color: rgb(0, 184, 0);
+}
+
+.mainDebtsList .debtsListSection article .priceRed {
+    color: red;
 }
 
 .mainDebtsList .debtsListSection article .optionsDiv {
     color: #E8FFFF;
     display: flex;
     justify-content: space-evenly;
-    padding: 5px;
+    margin: 10px 0px;
 }
 
+.mainDebtsList .debtsListSection article .optionsDiv svg {
+    width: 30px;
+    height: 30px;
+}
 
+.mainDebtsList form {
+    border: 3px solid #213E3B;
+    margin: 20px;
+    width: 80%;
+    border-radius: 20px;
+}
 
+.mainDebtsList form div input {
+    width: 20px !important;
+    margin: 10px 20px 20px 0px;
+}
 
 
 
@@ -289,7 +311,16 @@ main {
     .mainSignUp form p,
     .mainSignIn form p {
         font-size: 1rem;
-    }    
+    }
+
+    .mainDebtsList form input {
+        width: 70%;
+    }
+
+    .mainDebtsList .debtsListSection article h3,
+    .mainDebtsList .debtsListSection article p {
+        font-size: 1.1rem;
+    }
 }
 
 @media only screen and (min-width: 350px) {    
@@ -313,7 +344,24 @@ main {
     .mainSignIn form p {
         font-size: 1.2rem;
         margin: 0px;
-    }    
+    }
+
+    .mainDebtsList form {
+        width: 70%;
+    }
+
+    .mainDebtsList form input {
+        width: 60%;
+    }
+
+    .mainDebtsList .debtsListSection article {
+        width: 40%;
+    }
+
+    .mainDebtsList .debtsListSection article h3,
+    .mainDebtsList .debtsListSection article p {
+        font-size: 1.3rem;
+    }
 }
 
 @media only screen and (min-width: 500px) {
@@ -336,13 +384,44 @@ main {
 
     .mainHome .callToActionSection {
         width: 60%;
-    }    
+    }
+
+    .mainDebtsList form {
+        width: 60%;
+    }
+
+    .mainDebtsList form input {
+        width: 50%;
+        font-size: 1.2rem;
+    }
+
+    .mainDebtsList form input:last-child {
+        padding: 10px;
+        width: 8rem;
+    }
+
+    .mainDebtsList .debtsListSection article h3,
+    .mainDebtsList .debtsListSection article p {
+        font-size: 1.6rem;
+    }
 }
 
 @media only screen and (min-width: 600px) {
     .mainSignUp form input,
     .mainSignIn form input {
         width: 50%;
+    }
+
+    .mainDebtsList form {
+        width: 50%;
+    }
+
+    .mainDebtsList .debtsListSection {
+        width: 80%;
+    }
+
+    .mainDebtsList .debtsListSection article {
+        width: 35%;
     }
 }
 
@@ -361,9 +440,28 @@ main {
     .mainSignIn form p {
         font-size: 1.3rem;
     }
+
+    .mainDebtsList form input {
+        width: 40%;
+        font-size: 1.5rem;
+    }
+
+    .mainDebtsList form input:last-child {
+        padding: 10px;
+        width: 10rem;
+    }
+
+    .mainDebtsList .debtsListSection article h3,
+    .mainDebtsList .debtsListSection article p {
+        font-size: 1.8rem;
+    }
 }
 
 @media only screen and (min-width: 800px) {
+    .mainDebtsList .debtsListSection article h3,
+    .mainDebtsList .debtsListSection article p {
+        font-size: 1.8rem;
+    }
 }
 
 @media only screen and (min-width: 900px) {
@@ -385,6 +483,19 @@ main {
     .mainSignUp form input,
     .mainSignIn form input {
         width: 30%;
+    }
+
+    .mainDebtsList form {
+        width: 40%;
+    }
+
+    .mainDebtsList form input {
+        width: 40%;
+    }
+
+    .mainDebtsList .debtsListSection article {
+        width: 30%;
+        margin: 15px 10px;
     }
 }
 
@@ -410,6 +521,14 @@ main {
     footer .divLogoContainer .logo {
         width: 8rem;
         height: 4.31rem;
+    }
+
+    .mainDebtsList form {
+        width: 30%;
+    }
+
+    .mainDebtsList form input {
+        width: 50%;
     }
 }
 
@@ -449,7 +568,24 @@ main {
     .mainSignUp form input:last-child,
     .mainSignIn form input:last-child {
         width: 9rem;
-    }    
+    }
+
+    .mainDebtsList form {
+        width: 20%;
+    }
+
+    .mainDebtsList form input {
+        width: 60%;
+    }
+
+    .mainDebtsList .debtsListSection {
+        width: 70%;
+    }
+
+    .mainDebtsList .debtsListSection article {
+        width: 20%;
+        margin: 15px 20px;
+    }
 }
 
 @media only screen and (min-width: 1920px) {
@@ -482,7 +618,30 @@ main {
     .mainSignUp form input:last-child,
     .mainSignIn form input:last-child {
         width: 12rem;
-    }    
+    }
+
+    .mainDebtsList form input {
+        width: 50%;
+        font-size: 2rem;
+    }
+
+    .mainDebtsList form label {
+        font-size: 1.5rem;
+    }
+
+    .mainDebtsList form input:last-child {
+        width: 15rem;
+    }
+
+    .mainDebtsList .debtsListSection article h3,
+    .mainDebtsList .debtsListSection article p {
+        font-size: 2.2rem;
+    }
+
+    .mainDebtsList .debtsListSection article .optionsDiv svg {
+        width: 50px;
+        height: 50px;
+    }
 }
 
 @media only screen and (min-width: 2560px) {
@@ -514,7 +673,26 @@ main {
     .mainSignUp form input:last-child,
     .mainSignIn form input:last-child {
         width: 15rem;
-    }    
+    }
+
+    .mainDebtsList form input {
+        width: 60%;
+        font-size: 2.5rem;
+    }
+
+    .mainDebtsList form label {
+        font-size: 2rem;
+    }
+
+    .mainDebtsList .debtsListSection article h3,
+    .mainDebtsList .debtsListSection article p {
+        font-size: 3rem;
+    }
+
+    .mainDebtsList .debtsListSection article .optionsDiv svg {
+        width: 70px;
+        height: 70px;
+    }
 }
 
 
