@@ -23,4 +23,4 @@ app.use(session({
     store
 }))
 app.use("/", router)
-app.listen(4000, () => console.log("server listening on port 4000"))
+app.listen(process.env.PORT || 4000, process.env.HOST || '0.0.0.0', () => console.log("server listening..."))
