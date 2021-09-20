@@ -62,6 +62,21 @@ footer .navMenu a {
     font-weight: bold;
 }
 
+header .userPhoto {
+    display: none;
+    background-position: center;
+    background-size: cover;
+    width: 12vh;
+    height: 12vh;
+    margin: 4vh 4vh 0vh 0vh;
+    border-radius: 50px;
+}
+
+header .userPhoto svg {
+    height: 100%;
+    width: 100%;
+}
+
 footer {
     background: #213E3B;
     display: flex;
@@ -226,6 +241,7 @@ main {
     color: #213E3B;
     border-radius: 10px;
     width: 6rem;
+    cursor: pointer;
 }
 
 .mainSignUp form input::placeholder,
@@ -333,6 +349,10 @@ main {
 
 
 @media only screen and (min-width: 300px) {
+    header .userPhoto {
+        display: block;
+    }
+
     .mainHome .callToActionSection a {
         border-radius: 20px;
     }
