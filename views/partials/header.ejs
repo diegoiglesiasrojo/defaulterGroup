@@ -1,0 +1,16 @@
+<header>
+    <a href="<%= userLogIn ? '/debtsList' : '/' %>" class="aLogoContainer">
+        <div class="logo" style="background-image: url('/assets/logo.png');"></div>
+        <p>Defaulter Group</p>
+    </a>
+    <nav class="navMenu">
+        <% if(userLogIn) { %>
+            <li><a href="/debtsList">Debts List</a></li>
+            <li><a href="/users/logOut">Log Out</a></li>
+        <% } else { %>
+            <li><a href="/">Home</a></li>
+            <li><a href="/users/signIn">Sign In</a></li>
+            <li><a href="/users/signUp">Sign Up</a></li>
+        <% } %>
+    </nav>
+</header>

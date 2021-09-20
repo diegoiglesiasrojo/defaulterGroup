@@ -1,0 +1,25 @@
+<%- include("partials/head") %>
+<%- include("partials/header") %>
+
+<main class="mainDebtsList">
+    <section class="debtsListSection">
+        <% if (debtList.length === 0) { %>
+        <article class="noDebtsArticle"><h3>You don't have debts. Congratulations!</h3></article>
+        <% } else {debtList.map(debt => { %>
+            <%- include("partials/debt", {debt}) %>
+        <% })} %>
+    </section>
+    <form action="/debtsList" method="POST">
+        <input type="text" name="debtor" placeholder="Debtor" required>
+        <input type="number" name="debt" placeholder="Debt" required>
+        <div>
+            <label for="USD">USD</label>
+            <input type="radio" name="isUSD" value="true" id="USD">
+            <label for="ARG">ARG</label>
+            <input type="radio" name="isUSD" value="false" id="ARG" checked>
+        </div>
+        <input type="submit" value="Create debt">
+    </form>
+</main>
+
+<%- include("partials/footer") %>
