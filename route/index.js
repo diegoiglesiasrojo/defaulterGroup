@@ -28,8 +28,11 @@ router.route("/debtsList")
 .post(verifyRoutes.isLogIn, debtControllers.createDebt)
 .get(verifyRoutes.isLogIn, debtControllers.debtsList)
 
-router.route("/debtsList/:id")
+router.route("/debtsList/editDebt/:id")
+.get(verifyRoutes.isLogIn, debtControllers.updateDebtView)
 .post(verifyRoutes.isLogIn, debtControllers.updateDebtById)
+
+router.route("/debtsList/deleteDebt/:id")
 .get(verifyRoutes.isLogIn, debtControllers.deleteDebtById)
 
 module.exports = router

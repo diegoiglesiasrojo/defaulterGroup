@@ -1,0 +1,18 @@
+<%- include("partials/head") %>
+<%- include("partials/header") %>
+
+<main class="mainEditDebt">
+    <form action="/debtsList/editDebt/<%= debt._id %>" method="POST">
+        <input type="text" name="debtor" placeholder="Debtor" required value="<%= debt.debtor %>">
+        <input type="number" name="debt" placeholder="Debt" required value="<%= debt.debt %>">
+        <div>
+            <label for="USD">USD</label>
+            <input type="radio" name="isUSD" value="true" id="USD" <%= debt.isUSD ? 'checked' : 'null' %>>
+            <label for="ARG">ARG</label>
+            <input type="radio" name="isUSD" value="false" id="ARG" <%= debt.isUSD ? 'null' : 'checked' %>>
+        </div>
+        <input type="submit" value="Edit debt">
+    </form>
+</main>
+
+<%- include("partials/footer") %>

@@ -3,9 +3,11 @@
 
 <main class="mainDebtsList">
     <section class="debtsListSection">
-        <% debtList.map(debt => { %>
+        <% if (debtList.length === 0) { %>
+        <article class="noDebtsArticle"><h3>You don't have debts. Congratulations!</h3></article>
+        <% } else {debtList.map(debt => { %>
             <%- include("partials/debt", {debt}) %>
-        <% }) %>
+        <% })} %>
     </section>
     <form action="/debtsList" method="POST">
         <input type="text" name="debtor" placeholder="Debtor" required>

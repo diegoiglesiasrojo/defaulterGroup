@@ -29,7 +29,35 @@ const debtControllers = {
                 error: e,
                 userLogIn: req.session.userLogIn,
                 userId: req.session.userId
-            })    
+            })
+        })
+    },
+
+    updateDebtView: async (req, res) => {
+        Debt.findOne({_id: req.params.id})
+        .then(debt => {
+            if(debt) {
+                res.render("editDebt", {
+                    title: "Edit debt",
+                    userLogIn: req.session.userLogIn,
+                    debt,
+                    error: null,
+                    userId: req.session.userId
+                })
+            } else {
+                throw new Error
+            }
+        })
+        .catch( async e => {
+            console.log(req.session.userId)
+            const debtList = await Debt.find({_id: req.session.userId})
+            res.render("debtsList", {
+                title: "debts List",
+                debtList,
+                error: e,
+                userLogIn: req.session.userLogIn,
+                userId: req.session.userId
+            })
         })
     },
 
@@ -43,7 +71,7 @@ const debtControllers = {
             }
         })
         .catch(async e => {
-            const debtList = await Debt.find()
+            const debtList = await Debt.find({_id: req.session.userId})
             res.render("debtsList", {
                 title: "debts List",
                 debtList,
@@ -64,7 +92,7 @@ const debtControllers = {
             }
         })
         .catch(async e => {
-            const debtList = await Debt.find()
+            const debtList = await Debt.find({_id: req.session.userId})
             res.render("debtsList", {
                 title: "debts List",
                 debtList,

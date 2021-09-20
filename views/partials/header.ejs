@@ -1,8 +1,8 @@
 <header>
-    <div class="divLogoContainer">
+    <a href="<%= userLogIn ? '/debtsList' : '/' %>" class="aLogoContainer">
         <div class="logo" style="background-image: url('/assets/logo.png');"></div>
         <p>Defaulter Group</p>
-    </div>
+    </a>
     <nav class="navMenu">
         <% if(userLogIn) { %>
             <li><a href="/debtsList">Debts List</a></li>
