@@ -35,7 +35,8 @@ const validator = (req, res, next) => {
             validationError: validation.error.details,
             error: null,
             userData: {firstName, lastName, eMail, photoURL},
-            userLogIn: req.session.userLogIn
+            userLogIn: req.session.userLogIn,
+            userPhoto: req.session.userPhoto
         })
     }
 }

@@ -8,7 +8,8 @@ const debtControllers = {
             debtList,
             error: null,
             userLogIn: req.session.userLogIn,
-            userId: req.session.userId
+            userId: req.session.userId,
+            userPhoto: req.session.userPhoto
         })
     },
 
@@ -28,7 +29,8 @@ const debtControllers = {
                 debtList,
                 error: e,
                 userLogIn: req.session.userLogIn,
-                userId: req.session.userId
+                userId: req.session.userId,
+                userPhoto: req.session.userPhoto
             })
         })
     },
@@ -42,7 +44,8 @@ const debtControllers = {
                     userLogIn: req.session.userLogIn,
                     debt,
                     error: null,
-                    userId: req.session.userId
+                    userId: req.session.userId,
+                    userPhoto: req.session.userPhoto
                 })
             } else {
                 throw new Error
@@ -56,7 +59,8 @@ const debtControllers = {
                 debtList,
                 error: e,
                 userLogIn: req.session.userLogIn,
-                userId: req.session.userId
+                userId: req.session.userId,
+                userPhoto: req.session.userPhoto
             })
         })
     },
@@ -77,7 +81,8 @@ const debtControllers = {
                 debtList,
                 error: e,
                 userLogIn: req.session.userLogIn,
-                userId: req.session.userId
+                userId: req.session.userId,
+                userPhoto: req.session.userPhoto
             })
         })
     },
@@ -98,7 +103,8 @@ const debtControllers = {
                 debtList,
                 error: e,
                 userLogIn: req.session.userLogIn,
-                userId: req.session.userId
+                userId: req.session.userId,
+                userPhoto: req.session.userPhoto
             })
         })
     }

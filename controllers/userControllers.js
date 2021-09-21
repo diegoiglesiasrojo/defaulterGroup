@@ -8,7 +8,8 @@ const userControllers = {
             error: null,
             userData: undefined,
             userLogIn: req.session.userLogIn,
-            validationError: null
+            validationError: null,
+            userPhoto: req.session.userPhoto
         })
     },
 
@@ -26,7 +27,8 @@ const userControllers = {
                 await userToCreate.save()
                 req.session.userLogIn = true
                 req.session.userId = userToCreate._id
-                res.redirect("/users/signIn")
+                req.session.userPhoto = userToCreate.photoURL
+                res.redirect("/debtsList")
             }
         } catch (e){
             res.render("signUp", {
@@ -34,7 +36,8 @@ const userControllers = {
                 error: e.message,
                 userData: {firstName, lastName, eMail, photoURL},
                 userLogIn: req.session.userLogIn,
-                validationError: null
+                validationError: null,
+                userPhoto: req.session.userPhoto
             })
         }
     },
@@ -44,7 +47,8 @@ const userControllers = {
             title: "sign In",
             error: null,
             userData: undefined,
-            userLogIn: req.session.userLogIn
+            userLogIn: req.session.userLogIn,
+            userPhoto: req.session.userPhoto
         })
     },
 
@@ -58,6 +62,7 @@ const userControllers = {
                 if(bcryptjs.compareSync(password, account.password)) {
                     req.session.userLogIn = true
                     req.session.userId = account._id
+                    req.session.userPhoto = account.photoURL
                     res.redirect("/debtsList")
                 } else {
                     throw new Error("Mail or password incorrect")
@@ -69,7 +74,8 @@ const userControllers = {
                 title: "sign In",
                 error: e.message,
                 userData: {eMail, password},
-                userLogIn: req.session.userLogIn
+                userLogIn: req.session.userLogIn,
+                userPhoto: req.session.userPhoto
             })
         })
     },
