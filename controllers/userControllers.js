@@ -86,6 +86,26 @@ const userControllers = {
         })
     },
 
+    settingsView: (req, res) => {
+        res.render("settings", {
+            title: "settings",
+            error: null,
+            userId: req.session.userId,
+            userLogIn: req.session.userLogIn,
+            userPhoto: req.session.userPhoto
+        })
+    },
+
+    expenseDivider: (req, res) => {
+        res.render("expenseDivider", {
+            title: "expense divider",
+            error: null,
+            userId: req.session.userId,
+            userLogIn: req.session.userLogIn,
+            userPhoto: req.session.userPhoto
+        })
+    },
+
     updateUserById: (req, res) => {
         res.json("modificar un usuario con la id: " + req.params.id)
     },

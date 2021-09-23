@@ -23,7 +23,7 @@ header {
 
 header .aLogoContainer,
 footer .aLogoContainer {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -60,21 +60,55 @@ footer .navMenu a {
     padding-right: 0.5rem;
     color: #213E3B;
     font-weight: bold;
+    padding-left: 1rem;
 }
 
 header .userPhoto {
-    display: none;
     background-position: center;
     background-size: cover;
     width: 12vh;
     height: 12vh;
-    margin: 4vh 4vh 0vh 0vh;
+    margin: 4vh 4vh 0px 0px;
     border-radius: 50px;
 }
 
 header .userPhoto svg {
     height: 100%;
     width: 100%;
+}
+
+header .userOptionsContainer {
+    width: 14vh;
+    background: #213E3B;
+    display: none;
+    opacity: 0.7;
+    margin: 2vh 2vh 2vh 0px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .userOptionsContainer .closeOptions {
+    width: 4vh;
+    height: 4vh;
+    margin: 2px 0px 0px 2px;
+    align-self: flex-start;
+    cursor: pointer;
+}
+
+header .userOptionsContainer .closeOptions svg {
+    height: 100%;
+    width: 100%;
+    color: #E8FFFF;
+}
+
+header .userOptionsContainer a {
+    color: #E8FFFF;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 5px;
 }
 
 footer {
@@ -87,14 +121,6 @@ footer {
 footer .aLogoContainer p,
 footer .navMenu a {
     color: #E8FFFF;
-}
-
-footer .navMenu a {
-    padding-left: 0.5rem;
-}
-
-footer .aLogoContainer {
-    display: none;
 }
 
 footer .socialMediaFooter {
@@ -198,7 +224,9 @@ main {
 
 .mainSignUp,
 .mainSignIn,
-.mainEditDebt {
+.mainEditDebt,
+.mainSettings,
+.mainExpenseDivider {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -349,10 +377,6 @@ main {
 
 
 @media only screen and (min-width: 300px) {
-    header .userPhoto {
-        display: block;
-    }
-
     .mainHome .callToActionSection a {
         border-radius: 20px;
     }
@@ -373,18 +397,14 @@ main {
     }
 }
 
-@media only screen and (min-width: 350px) {    
+@media only screen and (min-width: 380px) {    
+    header .aLogoContainer,
     footer .aLogoContainer {
         display: flex;
     }
 }
 
-@media only screen and (min-width: 400px) {
-    header .navMenu {
-        flex-direction: row;
-        flex: 1;
-    }
-    
+@media only screen and (min-width: 400px) {    
     .mainSignUp form input,
     .mainSignIn form input {
         width: 60%;
@@ -413,6 +433,13 @@ main {
     .mainDebtsList .debtsListSection article h3,
     .mainDebtsList .debtsListSection article p {
         font-size: 1.3rem;
+    }
+}
+
+@media only screen and (min-width: 460px) {
+    header .navMenu {
+        flex-direction: row;
+        flex: 1;
     }
 }
 
@@ -583,6 +610,10 @@ main {
         height: 4.31rem;
     }
 
+    header .userOptionsContainer a {
+        font-size: 1rem;
+    }    
+
     .mainDebtsList form,
     .mainEditDebt form {
         width: 30%;
@@ -615,6 +646,10 @@ main {
         width: 10rem;
         height: 5.38rem;
     }
+
+    header .userOptionsContainer a {
+        font-size: 1.3rem;
+    }    
 
     .mainSignUp form input,
     .mainSignIn form input {
@@ -671,6 +706,10 @@ main {
     header .aLogoContainer p,
     footer .aLogoContainer p {
         font-size: 2.5rem;
+    }
+
+    header .userOptionsContainer a {
+        font-size: 2rem;
     }
 
     .mainSignUp form input,
@@ -735,6 +774,10 @@ main {
     header .aLogoContainer p,
     footer .aLogoContainer p {
         font-size: 3rem;
+    }
+
+    header .userOptionsContainer a {
+        font-size: 2.2rem;
     }
 
     .mainSignUp form input,

@@ -6,7 +6,7 @@
     <nav class="navMenu">
         <% if(userLogIn) { %>
             <li><a href="/debtsList">Debts List</a></li>
-            <li><a href="/users/logOut">Log Out</a></li>
+            <li><a href="/users/expenseDivider">Expense Divider</a></li>
         <% } else { %>
             <li><a href="/">Home</a></li>
             <li><a href="/users/signIn">Sign In</a></li>
@@ -14,7 +14,16 @@
         <% } %>
     </nav>
     <% if (userPhoto) { %>
-        <div class="userPhoto" style="background-image: url('<%= userPhoto %>');"></div>
+        <div onclick="userOptions(true)" class="userPhoto" id="userPhoto" style="background-image: url('<%= userPhoto %>');"></div>
+        <div class="userOptionsContainer" id="userOptionsContainer">
+            <div onclick="userOptions(false)" class="closeOptions">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                </svg>
+            </div>
+            <a href="/users/settings">Settings</a>
+            <a href="/users/logOut">Log Out</a>
+        </div>
     <% } else { %>
         <div class="userPhoto">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -23,4 +32,10 @@
             </svg>
         </div>
     <% } %>
+    <script>
+        const userOptions = (openContainer) => {
+            document.getElementById("userPhoto").style.display = openContainer ? "none" : "block"
+            document.getElementById("userOptionsContainer").style.display = openContainer ? "flex" : "none"
+        }
+    </script>
 </header>

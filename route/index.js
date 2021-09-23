@@ -20,6 +20,12 @@ router.route("/users/signIn")
 router.route("/users/logOut")
 .get(verifyRoutes.isLogIn, userControllers.logOut)
 
+router.route("/users/settings")
+.get(verifyRoutes.isLogIn, userControllers.settingsView)
+
+router.route("/users/expenseDivider")
+.get(verifyRoutes.isLogIn, userControllers.expenseDivider)
+
 router.route("/users/:id")
 .post(verifyRoutes.isLogIn, userControllers.updateUserById)
 .get(verifyRoutes.isLogIn, userControllers.deleteUserById)
