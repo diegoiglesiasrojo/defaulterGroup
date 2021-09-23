@@ -225,7 +225,6 @@ main {
 .mainSignUp,
 .mainSignIn,
 .mainEditDebt,
-.mainSettings,
 .mainExpenseDivider {
     display: flex;
     justify-content: center;
@@ -235,7 +234,8 @@ main {
 .mainSignUp form,
 .mainSignIn form,
 .mainDebtsList form,
-.mainEditDebt form {
+.mainEditDebt form,
+.mainSettings form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -246,7 +246,8 @@ main {
 .mainSignUp form input,
 .mainSignIn form input,
 .mainDebtsList form input,
-.mainEditDebt form input {
+.mainEditDebt form input,
+.mainSettings form input {
     border: none;
     background: #213E3B;
     color: #E8FFFF;
@@ -263,7 +264,8 @@ main {
 .mainSignUp form input:last-child,
 .mainSignIn form input:last-child,
 .mainDebtsList form input:last-child,
-.mainEditDebt form input:last-child {
+.mainEditDebt form input:last-child,
+.mainSettings form input:last-child {
     margin-bottom: 20px;
     background: #A6F6F1;
     color: #213E3B;
@@ -275,13 +277,15 @@ main {
 .mainSignUp form input::placeholder,
 .mainSignIn form input::placeholder,
 .mainDebtsList form input::placeholder,
-.mainEditDebt form input::placeholder {
+.mainEditDebt form input::placeholder,
+.mainSettings form input::placeholder {
     color: #E8FFFF;
     opacity: 0.6;
 }
 
 .mainSignUp form p,
-.mainSignIn form p {
+.mainSignIn form p,
+.mainSettings form p {
     font-weight: bold;
     color: red;
     font-size: 0.8rem;
@@ -301,6 +305,17 @@ main {
     font-size: 1.2rem;
     margin: 20px;
     text-align: center;
+}
+
+.mainSettings {
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainSettings h1 {
+    color: #213E3B;
+    font-size: 1.2rem;
+    margin-top: 10px;
 }
 
 .mainDebtsList {
@@ -382,7 +397,8 @@ main {
     }
 
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p {
         font-size: 1rem;
     }
 
@@ -406,12 +422,14 @@ main {
 
 @media only screen and (min-width: 400px) {    
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 60%;
     }
 
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p {
         font-size: 1.2rem;
         margin: 0px;
     }
@@ -490,7 +508,8 @@ main {
 
 @media only screen and (min-width: 600px) {
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 50%;
     }
 
@@ -515,12 +534,14 @@ main {
     }
 
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 40%;
     }
     
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p {
         font-size: 1.3rem;
     }
 
@@ -566,7 +587,8 @@ main {
     }
 
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 30%;
     }
 
@@ -595,6 +617,10 @@ main {
     header .aLogoContainer p,
     footer .aLogoContainer p {
         font-size: 1.2rem;
+    }
+
+    .mainSettings h1 {
+        font-size: 1.7rem;
     }
 }
 
@@ -652,18 +678,21 @@ main {
     }    
 
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 25%;
         font-size: 1.6rem;
     }
     
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p {
         font-size: 1.6rem;
     }
 
     .mainSignUp form input:last-child,
-    .mainSignIn form input:last-child {
+    .mainSignIn form input:last-child,
+    .mainSettings form input:last-child {
         width: 9rem;
     }
 
@@ -672,6 +701,10 @@ main {
         font-size: 1.5rem;
     }
 
+    .mainSettings h1 {
+        font-size: 2.1rem;
+    }
+    
     .mainDebtsList form,
     .mainEditDebt form {
         width: 20%;
@@ -713,18 +746,21 @@ main {
     }
 
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 25%;
         font-size: 1.9rem;
     }
     
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p {
         font-size: 1.9rem;
     }
 
     .mainSignUp form input:last-child,
-    .mainSignIn form input:last-child {
+    .mainSignIn form input:last-child,
+    .mainSettings form input:last-child {
         width: 12rem;
     }
 
@@ -732,6 +768,10 @@ main {
     .mainSignIn a {
         font-size: 1.9rem;
     }    
+
+    .mainSettings h1 {
+        font-size: 2.9rem;
+    }
 
     .mainDebtsList form input,
     .mainEditDebt form input {
@@ -781,17 +821,20 @@ main {
     }
 
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         font-size: 2.5rem;
     }
     
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p {
         font-size: 2.5rem;
     }
 
     .mainSignUp form input:last-child,
-    .mainSignIn form input:last-child {
+    .mainSignIn form input:last-child,
+    .mainSettings form input:last-child {
         width: 15rem;
     }
 
@@ -799,6 +842,10 @@ main {
     .mainSignIn a {
         font-size: 2.5rem;
     }    
+
+    .mainSettings h1 {
+        font-size: 3.5rem;
+    }
 
     .mainDebtsList form input,
     .mainEditDebt form input {

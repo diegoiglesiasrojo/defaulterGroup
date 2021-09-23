@@ -14,13 +14,13 @@ const userControllers = {
     },
 
     createUser: async (req, res) => {
-        const {firstName, lastName, password, eMail, photoURL} = req.body
+        const {firstName, lastName, password, mail, photoURL} = req.body
         let encryptedPassword = bcryptjs.hashSync(password)
         try {
             const userToCreate = await new User({
-                firstName, lastName, password: encryptedPassword, eMail, photoURL
+                firstName, lastName, password: encryptedPassword, mail, photoURL
             })
-            const userExist = await User.findOne({eMail})
+            const userExist = await User.findOne({mail})
             if (userExist) {
                 throw new Error("Mail already exist")
             } else {
@@ -28,13 +28,16 @@ const userControllers = {
                 req.session.userLogIn = true
                 req.session.userId = userToCreate._id
                 req.session.userPhoto = userToCreate.photoURL
+                req.session.userEmail = userToCreate.mail
+                req.session.userFirstName = userToCreate.firstName
+                req.session.userLastName = userToCreate.lastName
                 res.redirect("/debtsList")
             }
         } catch (e){
             res.render("signUp", {
                 title: "sign Up",
                 error: e.message,
-                userData: {firstName, lastName, eMail, photoURL},
+                userData: {firstName, lastName, mail, photoURL},
                 userLogIn: req.session.userLogIn,
                 validationError: null,
                 userPhoto: req.session.userPhoto
@@ -53,8 +56,8 @@ const userControllers = {
     },
 
     signIn: (req, res) => {
-        const {eMail, password} = req.body
-        User.findOne({eMail: eMail})
+        const {mail, password} = req.body
+        User.findOne({mail: mail})
         .then(account => {
             if(!account) {
                 throw new Error("Mail or password incorrect")
@@ -63,6 +66,9 @@ const userControllers = {
                     req.session.userLogIn = true
                     req.session.userId = account._id
                     req.session.userPhoto = account.photoURL
+                    req.session.userEmail = account.mail
+                    req.session.userFirstName = account.firstName
+                    req.session.userLastName = account.lastName    
                     res.redirect("/debtsList")
                 } else {
                     throw new Error("Mail or password incorrect")
@@ -73,7 +79,7 @@ const userControllers = {
             res.render("signIn", {
                 title: "sign In",
                 error: e.message,
-                userData: {eMail, password},
+                userData: {mail, password},
                 userLogIn: req.session.userLogIn,
                 userPhoto: req.session.userPhoto
             })
@@ -90,9 +96,13 @@ const userControllers = {
         res.render("settings", {
             title: "settings",
             error: null,
+            validationError: null,
             userId: req.session.userId,
             userLogIn: req.session.userLogIn,
-            userPhoto: req.session.userPhoto
+            userPhoto: req.session.userPhoto,
+            userEmail: req.session.userEmail,
+            userFirstName: req.session.userFirstName,
+            userLastName: req.session.userLastName
         })
     },
 
@@ -107,7 +117,29 @@ const userControllers = {
     },
 
     updateUserById: (req, res) => {
-        res.json("modificar un usuario con la id: " + req.params.id)
+        User.findOneAndUpdate({_id: req.params.id}, {...req.body})
+        .then(account => {
+            if(account) {
+                req.session.destroy(() => {
+                    res.redirect("/")
+                })
+            } else {
+                throw new Error
+            }
+        })
+        .catch(e => {
+            res.render("settings", {
+                title: "settings",
+                error: e.message,
+                validationError: null,
+                userId: req.session.userId,
+                userLogIn: req.session.userLogIn,
+                userPhoto: req.session.userPhoto,
+                userEmail: req.session.userEmail,
+                userFirstName: req.session.userFirstName,
+                userLastName: req.session.userLastName
+            })
+        })
     },
 
     deleteUserById: (req, res) => {
