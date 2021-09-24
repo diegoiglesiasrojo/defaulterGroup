@@ -1,5 +1,5 @@
 const joi = require('joi')
-const validator = (req, res, next) => {
+const validatorToModify = (req, res, next) => {
     const schema = joi.object({
         firstName: joi.string().min(2).max(35).pattern(new RegExp('[^0-9]+$')).required().messages({
             "string.max": "A maximum of 35 characters is allowed",
@@ -16,10 +16,6 @@ const validator = (req, res, next) => {
             "string.min": "A minimum of 6 characters is allowed",
             "string.email": "You must be use a valid mail"
         }),
-        password: joi.string().min(4).max(255).required().messages({
-            "string.max": "A maximum of 255 characters is allowed",
-            "string.min": "A minimum of 4 characters is allowed",
-        }),
         photoURL: joi.string().min(6).max(2048).required().messages({
             "string.max": "A maximum of 2048 characters is allowed",
             "string.min": "A minimum of 6 characters is allowed",
@@ -30,15 +26,18 @@ const validator = (req, res, next) => {
         next()
     } else {
         const {firstName, lastName, mail, photoURL} = req.body
-        res.render("signUp", {
-            title: "sign Up",
+        res.render("settings", {
+            title: "settings",
             validationError: validation.error.details,
             error: null,
-            userData: {firstName, lastName, mail, photoURL},
+            userId: req.session.userId,
             userLogIn: req.session.userLogIn,
-            userPhoto: req.session.userPhoto
+            userPhoto: photoURL,
+            userEmail: mail,
+            userFirstName: firstName,
+            userLastName: lastName
         })
     }
 }
 
-module.exports = validator
+module.exports = validatorToModify

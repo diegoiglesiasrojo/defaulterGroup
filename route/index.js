@@ -5,6 +5,7 @@ const debtControllers = require("../controllers/debtControllers")
 const viewsControllers = require("../controllers/viewsControllers")
 const verifyRoutes = require("../controllers/verifyRoutes")
 const validator = require("../controllers/validator")
+const validatorToModify = require("../controllers/validatorToModify")
 
 router.route("/")
 .get(verifyRoutes.isLogOut, viewsControllers.home)
@@ -20,9 +21,21 @@ router.route("/users/signIn")
 router.route("/users/logOut")
 .get(verifyRoutes.isLogIn, userControllers.logOut)
 
+router.route("/users/settings")
+.get(verifyRoutes.isLogIn, userControllers.settingsView)
+
+router.route("/users/settings/:id")
+.post(verifyRoutes.isLogIn, validatorToModify, userControllers.updateUserById)
+
 router.route("/users/:id")
-.post(verifyRoutes.isLogIn, userControllers.updateUserById)
 .get(verifyRoutes.isLogIn, userControllers.deleteUserById)
+
+router.route("/expenseDivider")
+.get(verifyRoutes.isLogIn, debtControllers.expenseDividerView)
+.post(verifyRoutes.isLogIn, debtControllers.expenseDivider)
+
+router.route("/expenseDivider/:countOfPeople")
+.get(verifyRoutes.isLogIn, debtControllers.expenseDividerWithCount)
 
 router.route("/debtsList")
 .post(verifyRoutes.isLogIn, debtControllers.createDebt)

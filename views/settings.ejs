@@ -1,0 +1,20 @@
+<%- include("partials/head") %>
+<%- include("partials/header") %>
+
+<main class="mainSettings">
+    <h1>Edit your profile </h1>
+    <form action="/users/settings/<%= userId %>" method="POST">
+        <input type="text" name="firstName" placeholder="first name" required value="<%= userFirstName %>">
+        <%- include("partials/textValidationError", {inputName: "firstName"}) %>
+        <input type="text" name="lastName" placeholder="last name" required value="<%= userLastName %>">
+        <%- include("partials/textValidationError", {inputName: "lastName"}) %>
+        <input type="email" name="mail" placeholder="email" required value="<%= userEmail %>">
+        <%- include("partials/textValidationError", {inputName: "mail"}) %>
+        <input type="text" name="photoURL" placeholder="photo URL" required value="<%= userPhoto %>">
+        <%- include("partials/textValidationError", {inputName: "photoURL"}) %>
+        <p style="opacity: <%= error ? '1' : '0' %> ;"><%= error ? error : 'error' %></p>
+        <input type="submit" value="Save">
+    </form>
+</main>
+
+<%- include("partials/footer") %>

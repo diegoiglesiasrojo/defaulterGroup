@@ -23,7 +23,7 @@ header {
 
 header .aLogoContainer,
 footer .aLogoContainer {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -60,21 +60,55 @@ footer .navMenu a {
     padding-right: 0.5rem;
     color: #213E3B;
     font-weight: bold;
+    padding-left: 1rem;
 }
 
 header .userPhoto {
-    display: none;
     background-position: center;
     background-size: cover;
     width: 12vh;
     height: 12vh;
-    margin: 4vh 4vh 0vh 0vh;
+    margin: 4vh 4vh 0px 0px;
     border-radius: 50px;
 }
 
 header .userPhoto svg {
     height: 100%;
     width: 100%;
+}
+
+header .userOptionsContainer {
+    width: 14vh;
+    background: #213E3B;
+    display: none;
+    opacity: 0.7;
+    margin: 2vh 2vh 2vh 0px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .userOptionsContainer .closeOptions {
+    width: 4vh;
+    height: 4vh;
+    margin: 2px 0px 0px 2px;
+    align-self: flex-start;
+    cursor: pointer;
+}
+
+header .userOptionsContainer .closeOptions svg {
+    height: 100%;
+    width: 100%;
+    color: #E8FFFF;
+}
+
+header .userOptionsContainer a {
+    color: #E8FFFF;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 5px;
 }
 
 footer {
@@ -87,14 +121,6 @@ footer {
 footer .aLogoContainer p,
 footer .navMenu a {
     color: #E8FFFF;
-}
-
-footer .navMenu a {
-    padding-left: 0.5rem;
-}
-
-footer .aLogoContainer {
-    display: none;
 }
 
 footer .socialMediaFooter {
@@ -207,7 +233,9 @@ main {
 .mainSignUp form,
 .mainSignIn form,
 .mainDebtsList form,
-.mainEditDebt form {
+.mainEditDebt form,
+.mainSettings form,
+.mainExpenseDivider form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -218,7 +246,9 @@ main {
 .mainSignUp form input,
 .mainSignIn form input,
 .mainDebtsList form input,
-.mainEditDebt form input {
+.mainEditDebt form input,
+.mainSettings form input,
+.mainExpenseDivider form input {
     border: none;
     background: #213E3B;
     color: #E8FFFF;
@@ -235,7 +265,9 @@ main {
 .mainSignUp form input:last-child,
 .mainSignIn form input:last-child,
 .mainDebtsList form input:last-child,
-.mainEditDebt form input:last-child {
+.mainEditDebt form input:last-child,
+.mainSettings form input:last-child,
+.mainExpenseDivider form input:last-child {
     margin-bottom: 20px;
     background: #A6F6F1;
     color: #213E3B;
@@ -247,13 +279,17 @@ main {
 .mainSignUp form input::placeholder,
 .mainSignIn form input::placeholder,
 .mainDebtsList form input::placeholder,
-.mainEditDebt form input::placeholder {
+.mainEditDebt form input::placeholder,
+.mainSettings form input::placeholder,
+.mainExpenseDivider form input::placeholder {
     color: #E8FFFF;
     opacity: 0.6;
 }
 
 .mainSignUp form p,
-.mainSignIn form p {
+.mainSignIn form p,
+.mainSettings form p,
+.mainExpenseDivider form p {
     font-weight: bold;
     color: red;
     font-size: 0.8rem;
@@ -267,12 +303,26 @@ main {
 }
 
 .mainSignUp a,
-.mainSignIn a {
+.mainSignIn a,
+.mainExpenseDivider a {
     text-decoration: none;
     color: #213E3B;
     font-size: 1.2rem;
     margin: 20px;
     text-align: center;
+}
+
+.mainSettings,
+.mainExpenseDivider {
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainSettings h1,
+.mainExpenseDivider h1 {
+    color: #213E3B;
+    font-size: 1.2rem;
+    margin-top: 10px;
 }
 
 .mainDebtsList {
@@ -333,7 +383,8 @@ main {
 }
 
 .mainDebtsList form,
-.mainEditDebt form {
+.mainEditDebt form,
+.mainExpenseDivider form {
     border: 3px solid #213E3B;
     margin: 20px;
     width: 80%;
@@ -341,7 +392,8 @@ main {
 }
 
 .mainDebtsList form div input,
-.mainEditDebt form div input {
+.mainEditDebt form div input,
+.mainExpenseDivider form div input {
     width: 20px !important;
     margin: 10px 10px 20px 0px;
 }
@@ -349,21 +401,20 @@ main {
 
 
 @media only screen and (min-width: 300px) {
-    header .userPhoto {
-        display: block;
-    }
-
     .mainHome .callToActionSection a {
         border-radius: 20px;
     }
 
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p,
+    .mainExpenseDivider form p {
         font-size: 1rem;
     }
 
     .mainDebtsList form input,
-    .mainEditDebt form input {
+    .mainEditDebt form input,
+    .mainExpenseDivider form input {
         width: 70%;
     }
 
@@ -373,37 +424,32 @@ main {
     }
 }
 
-@media only screen and (min-width: 350px) {    
+@media only screen and (min-width: 380px) {    
+    header .aLogoContainer,
     footer .aLogoContainer {
         display: flex;
     }
 }
 
-@media only screen and (min-width: 400px) {
-    header .navMenu {
-        flex-direction: row;
-        flex: 1;
-    }
-    
+@media only screen and (min-width: 400px) {    
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 60%;
     }
 
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p,
+    .mainExpenseDivider form p {
         font-size: 1.2rem;
         margin: 0px;
     }
 
     .mainDebtsList form,
-    .mainEditDebt form {
+    .mainEditDebt form,
+    .mainExpenseDivider form {
         width: 70%;
-    }
-
-    .mainDebtsList form input,
-    .mainEditDebt form input {
-        width: 60%;
     }
 
     .mainDebtsList .debtsListSection article {
@@ -413,6 +459,13 @@ main {
     .mainDebtsList .debtsListSection article h3,
     .mainDebtsList .debtsListSection article p {
         font-size: 1.3rem;
+    }
+}
+
+@media only screen and (min-width: 460px) {
+    header .navMenu {
+        flex-direction: row;
+        flex: 1;
     }
 }
 
@@ -439,18 +492,20 @@ main {
     }
 
     .mainDebtsList form,
-    .mainEditDebt form {
+    .mainEditDebt form,
+    .mainExpenseDivider form {
         width: 60%;
     }
 
     .mainDebtsList form input,
-    .mainEditDebt form input {
-        width: 50%;
+    .mainEditDebt form input,
+    .mainExpenseDivider form input {
         font-size: 1.2rem;
     }
 
     .mainDebtsList form input:last-child,
-    .mainEditDebt form input:last-child {
+    .mainEditDebt form input:last-child,
+    .mainExpenseDivider form input:last-child {
         padding: 10px;
         width: 8rem;
     }
@@ -463,12 +518,14 @@ main {
 
 @media only screen and (min-width: 600px) {
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 50%;
     }
 
     .mainDebtsList form,
-    .mainEditDebt form {
+    .mainEditDebt form,
+    .mainExpenseDivider form {
         width: 50%;
     }
 
@@ -488,23 +545,28 @@ main {
     }
 
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 40%;
     }
     
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p,
+    .mainExpenseDivider form p {
         font-size: 1.3rem;
     }
 
     .mainDebtsList form input,
-    .mainEditDebt form input {
-        width: 40%;
+    .mainEditDebt form input,
+    .mainExpenseDivider form input {
+        width: 60%;
         font-size: 1.5rem;
     }
 
     .mainDebtsList form input:last-child,
-    .mainEditDebt form input:last-child {
+    .mainEditDebt form input:last-child,
+    .mainExpenseDivider form input:last-child {
         padding: 10px;
         width: 10rem;
     }
@@ -539,17 +601,14 @@ main {
     }
 
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 30%;
     }
 
     .mainDebtsList form,
-    .mainEditDebt form  {
-        width: 40%;
-    }
-
-    .mainDebtsList form input,
-    .mainEditDebt form input {
+    .mainEditDebt form,
+    .mainExpenseDivider form {
         width: 40%;
     }
 
@@ -569,6 +628,11 @@ main {
     footer .aLogoContainer p {
         font-size: 1.2rem;
     }
+
+    .mainSettings h1,
+    .mainExpenseDivider h1 {
+        font-size: 1.7rem;
+    }
 }
 
 @media only screen and (min-width: 1080px) {
@@ -583,14 +647,14 @@ main {
         height: 4.31rem;
     }
 
-    .mainDebtsList form,
-    .mainEditDebt form {
-        width: 30%;
-    }
+    header .userOptionsContainer a {
+        font-size: 1rem;
+    }    
 
-    .mainDebtsList form input,
-    .mainEditDebt form input {
-        width: 50%;
+    .mainDebtsList form,
+    .mainEditDebt form,
+    .mainExpenseDivider form {
+        width: 30%;
     }
 }
 
@@ -616,35 +680,45 @@ main {
         height: 5.38rem;
     }
 
+    header .userOptionsContainer a {
+        font-size: 1.3rem;
+    }    
+
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 25%;
         font-size: 1.6rem;
     }
     
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p,
+    .mainExpenseDivider form p {
         font-size: 1.6rem;
     }
 
     .mainSignUp form input:last-child,
-    .mainSignIn form input:last-child {
+    .mainSignIn form input:last-child,
+    .mainSettings form input:last-child {
         width: 9rem;
     }
 
     .mainSignUp a,
-    .mainSignIn a {
+    .mainSignIn a,
+    .mainExpenseDivider a {
         font-size: 1.5rem;
     }
 
-    .mainDebtsList form,
-    .mainEditDebt form {
-        width: 20%;
+    .mainSettings h1,
+    .mainExpenseDivider h1 {
+        font-size: 2.1rem;
     }
-
-    .mainDebtsList form input,
-    .mainEditDebt form input {
-        width: 60%;
+    
+    .mainDebtsList form,
+    .mainEditDebt form,
+    .mainExpenseDivider form {
+        width: 20%;
     }
 
     .mainDebtsList .debtsListSection {
@@ -673,40 +747,56 @@ main {
         font-size: 2.5rem;
     }
 
+    header .userOptionsContainer a {
+        font-size: 2rem;
+    }
+
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         width: 25%;
         font-size: 1.9rem;
     }
     
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p,
+    .mainExpenseDivider form p {
         font-size: 1.9rem;
     }
 
     .mainSignUp form input:last-child,
-    .mainSignIn form input:last-child {
+    .mainSignIn form input:last-child,
+    .mainSettings form input:last-child {
         width: 12rem;
     }
 
     .mainSignUp a,
-    .mainSignIn a {
+    .mainSignIn a,
+    .mainExpenseDivider a {
         font-size: 1.9rem;
     }    
 
+    .mainSettings h1,
+    .mainExpenseDivider h1 {
+        font-size: 2.9rem;
+    }
+
     .mainDebtsList form input,
-    .mainEditDebt form input {
-        width: 50%;
+    .mainEditDebt form input,
+    .mainExpenseDivider form input {
         font-size: 2rem;
     }
 
     .mainDebtsList form label,
-    .mainEditDebt form label {
+    .mainEditDebt form label,
+    .mainExpenseDivider form label {
         font-size: 1.5rem;
     }
 
     .mainDebtsList form input:last-child,
-    .mainEditDebt form input:last-child {
+    .mainEditDebt form input:last-child,
+    .mainExpenseDivider form input:last-child {
         width: 15rem;
     }
 
@@ -737,34 +827,49 @@ main {
         font-size: 3rem;
     }
 
+    header .userOptionsContainer a {
+        font-size: 2.2rem;
+    }
+
     .mainSignUp form input,
-    .mainSignIn form input {
+    .mainSignIn form input,
+    .mainSettings form input {
         font-size: 2.5rem;
     }
     
     .mainSignUp form p,
-    .mainSignIn form p {
+    .mainSignIn form p,
+    .mainSettings form p,
+    .mainExpenseDivider form p {
         font-size: 2.5rem;
     }
 
     .mainSignUp form input:last-child,
-    .mainSignIn form input:last-child {
+    .mainSignIn form input:last-child,
+    .mainSettings form input:last-child {
         width: 15rem;
     }
 
     .mainSignUp a,
-    .mainSignIn a {
+    .mainSignIn a,
+    .mainExpenseDivider a {
         font-size: 2.5rem;
     }    
 
+    .mainSettings h1,
+    .mainExpenseDivider h1 {
+        font-size: 3.5rem;
+    }
+
     .mainDebtsList form input,
-    .mainEditDebt form input {
-        width: 60%;
+    .mainEditDebt form input,
+    .mainExpenseDivider form input {
         font-size: 2.5rem;
     }
 
     .mainDebtsList form label,
-    .mainEditDebt form label {
+    .mainEditDebt form label,
+    .mainExpenseDivider form label {
         font-size: 2rem;
     }
 

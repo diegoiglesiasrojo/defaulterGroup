@@ -3,7 +3,7 @@
 
 <main class="mainSignIn">
     <form action="/users/signIn" method="POST">
-        <input type="email" name="eMail" placeholder="mail" required value="<%= !userData ? '' : userData.eMail %>">
+        <input type="email" name="mail" placeholder="mail" required value="<%= !userData ? '' : userData.mail %>">
         <input type="password" name="password" placeholder="password" required value="<%= !userData ? '' : userData.password %>">
         <p style="opacity: <%= error ? '1' : '0' %> ;"><%= error ? error : 'error' %></p>
         <input type="submit" value="Sign In">

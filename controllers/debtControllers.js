@@ -107,6 +107,57 @@ const debtControllers = {
                 userPhoto: req.session.userPhoto
             })
         })
+    },
+
+    expenseDividerView: (req, res) => {
+        res.render("expenseDivider", {
+            title: "expense divider",
+            error: null,
+            countOfPeople: 2,
+            expenseData: null,
+            userId: req.session.userId,
+            userLogIn: req.session.userLogIn,
+            userPhoto: req.session.userPhoto
+        })
+    },
+
+    expenseDividerWithCount: (req, res) => {
+        if (req.params.countOfPeople > 1) {
+            console.log(req.query)
+            res.render("expenseDivider", {
+                title: "expense divider",
+                error: null,
+                countOfPeople: req.params.countOfPeople,
+                expenseData: null,
+                userId: req.session.userId,
+                userLogIn: req.session.userLogIn,
+                userPhoto: req.session.userPhoto
+            })
+        } else {
+            res.redirect("/expenseDivider")
+        }
+    },
+
+    expenseDivider: async (req, res) => {
+        const {totalCost, isUSD, people} = req.body
+        for (let i = 0; i < people.length; i++) {
+            const debtToCreate = await new Debt({
+                userId: req.session.userId, debtor: people[i], debt: (totalCost/people.length).toFixed(2), isUSD
+            })
+            debtToCreate.save()
+            .catch( async e => {
+                const debtList = await Debt.find({_id: req.session.userId})
+                res.render("debtsList", {
+                    title: "debts List",
+                    debtList,
+                    error: e,
+                    userLogIn: req.session.userLogIn,
+                    userId: req.session.userId,
+                    userPhoto: req.session.userPhoto
+                })
+            })
+        }
+        res.redirect("/debtsList")
     }
 }
 
