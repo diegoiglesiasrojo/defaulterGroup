@@ -27,11 +27,15 @@ router.route("/users/settings")
 router.route("/users/settings/:id")
 .post(verifyRoutes.isLogIn, validatorToModify, userControllers.updateUserById)
 
-router.route("/users/expenseDivider")
-.get(verifyRoutes.isLogIn, userControllers.expenseDivider)
-
 router.route("/users/:id")
 .get(verifyRoutes.isLogIn, userControllers.deleteUserById)
+
+router.route("/expenseDivider")
+.get(verifyRoutes.isLogIn, debtControllers.expenseDividerView)
+.post(verifyRoutes.isLogIn, debtControllers.expenseDivider)
+
+router.route("/expenseDivider/:countOfPeople")
+.get(verifyRoutes.isLogIn, debtControllers.expenseDividerWithCount)
 
 router.route("/debtsList")
 .post(verifyRoutes.isLogIn, debtControllers.createDebt)

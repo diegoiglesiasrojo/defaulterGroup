@@ -2,7 +2,23 @@
 <%- include("partials/header") %>
 
 <main class="mainExpenseDivider">
-expense divider WIP
+    <h1>Expense Divider</h1>
+    <form action="/expenseDivider" method="POST">
+        <input type="number" name="totalCost" id="totalCost" required placeholder="Total cost">
+        <div>
+            <label for="USD">USD</label>
+            <input type="radio" name="isUSD" value="true" id="USD">
+            <label for="ARG">ARG</label>
+            <input type="radio" name="isUSD" value="false" id="ARG" checked>
+        </div>
+        <% for (let i = 0; i < countOfPeople; i++) { %>
+            <input type="text" name="people" placeholder="Person <%= i+1 %>" required>
+        <% } %>
+        <p style="opacity: <%= error ? '1' : '0' %> ;"><%= error ? error : 'error' %></p>
+        <input type="submit" value="Calculate">
+    </form>
+    <a href="/expenseDivider/<%= parseInt(countOfPeople) +1 %>">Add new person</a>
 </main>
 
+<% console.log(countOfPeople) %>
 <%- include("partials/footer") %>

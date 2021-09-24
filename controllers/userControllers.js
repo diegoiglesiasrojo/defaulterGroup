@@ -106,16 +106,6 @@ const userControllers = {
         })
     },
 
-    expenseDivider: (req, res) => {
-        res.render("expenseDivider", {
-            title: "expense divider",
-            error: null,
-            userId: req.session.userId,
-            userLogIn: req.session.userLogIn,
-            userPhoto: req.session.userPhoto
-        })
-    },
-
     updateUserById: (req, res) => {
         User.findOneAndUpdate({_id: req.params.id}, {...req.body})
         .then(account => {
